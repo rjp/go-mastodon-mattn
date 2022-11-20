@@ -58,6 +58,17 @@ type StatusHistory struct {
 	MediaAttachments []Attachment `json:"media_attachments"`
 }
 
+// StatusHistory is a struct to hold status history data.
+type StatusHistory struct {
+	Content          string       `json:"content"`
+	SpoilerText      string       `json:"spoiler_text"`
+	Account          Account      `json:"account"`
+	Sensitive        bool         `json:"sensitive"`
+	CreatedAt        time.Time    `json:"created_at"`
+	Emojis           []Emoji      `json:"emojis"`
+	MediaAttachments []Attachment `json:"media_attachments"`
+}
+
 // Context holds information for a mastodon context.
 type Context struct {
 	Ancestors   []*Status `json:"ancestors"`
