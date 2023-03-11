@@ -171,10 +171,10 @@ func wsTest(t *testing.T, q chan Event, cancel func()) {
 		t.Fatalf("want %q but %q", "819516", events[4].(*ConversationEvent).Conversation.ID)
 	}
 	if errorEvent, ok := events[5].(*ErrorEvent); !ok {
-		t.Fatalf("should be fail: %v", errorEvent.err)
+		t.Fatalf("should be fail: %v", errorEvent.Err)
 	}
 	if errorEvent, ok := events[6].(*ErrorEvent); !ok {
-		t.Fatalf("should be fail: %v", errorEvent.err)
+		t.Fatalf("should be fail: %v", errorEvent.Err)
 	}
 	if errorEvent, ok := events[7].(*ErrorEvent); !ok {
 		t.Fatalf("should be fail: %v", errorEvent.err)
@@ -204,7 +204,7 @@ func TestStreamingWS(t *testing.T) {
 		defer wg.Done()
 		e := <-q
 		if errorEvent, ok := e.(*ErrorEvent); !ok {
-			t.Errorf("should be fail: %v", errorEvent.err)
+			t.Errorf("should be fail: %v", errorEvent.Err)
 		}
 	}()
 	wg.Wait()
@@ -240,7 +240,7 @@ func TestHandleWS(t *testing.T) {
 		defer wg.Done()
 		e := <-q
 		if errorEvent, ok := e.(*ErrorEvent); !ok {
-			t.Errorf("should be fail: %v", errorEvent.err)
+			t.Errorf("should be fail: %v", errorEvent.Err)
 		}
 	}()
 	err := client.handleWS(context.Background(), ":", q)
@@ -255,7 +255,7 @@ func TestHandleWS(t *testing.T) {
 		defer wg.Done()
 		e := <-q
 		if errorEvent, ok := e.(*ErrorEvent); !ok {
-			t.Errorf("should be fail: %v", errorEvent.err)
+			t.Errorf("should be fail: %v", errorEvent.Err)
 		}
 	}()
 	err = client.handleWS(ctx, "ws://"+ts.Listener.Addr().String(), q)
@@ -268,7 +268,7 @@ func TestHandleWS(t *testing.T) {
 		defer wg.Done()
 		e := <-q
 		if errorEvent, ok := e.(*ErrorEvent); !ok {
-			t.Errorf("should be fail: %v", errorEvent.err)
+			t.Errorf("should be fail: %v", errorEvent.Err)
 		}
 	}()
 	client.handleWS(context.Background(), "ws://"+ts.Listener.Addr().String(), q)

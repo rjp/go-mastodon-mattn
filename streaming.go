@@ -47,10 +47,10 @@ type ConversationEvent struct {
 func (e *ConversationEvent) event() {}
 
 // ErrorEvent is a struct for passing errors to app.
-type ErrorEvent struct{ err error }
+type ErrorEvent struct{ Err error }
 
 func (e *ErrorEvent) event()        {}
-func (e *ErrorEvent) Error() string { return e.err.Error() }
+func (e *ErrorEvent) Error() string { return e.Err.Error() }
 
 // Event is an interface passing events to app.
 type Event interface {

@@ -93,7 +93,7 @@ func (c *WSClient) streamingWS(ctx context.Context, stream, tag string) (chan Ev
 func (c *WSClient) handleWS(ctx context.Context, rawurl string, q chan Event) error {
 	conn, err := c.dialRedirect(rawurl)
 	if err != nil {
-		q <- &ErrorEvent{err: err}
+		q <- &ErrorEvent{Err: err}
 
 		// End.
 		return err
@@ -108,7 +108,7 @@ func (c *WSClient) handleWS(ctx context.Context, rawurl string, q chan Event) er
 	for {
 		select {
 		case <-ctx.Done():
-			q <- &ErrorEvent{err: ctx.Err()}
+			q <- &ErrorEvent{Err: ctx.Err()}
 
 			// End.
 			return ctx.Err()
@@ -118,7 +118,7 @@ func (c *WSClient) handleWS(ctx context.Context, rawurl string, q chan Event) er
 		var s Stream
 		err := conn.ReadJSON(&s)
 		if err != nil {
-			q <- &ErrorEvent{err: err}
+			q <- &ErrorEvent{Err: err}
 
 			// Reconnect.
 			break
