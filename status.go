@@ -69,6 +69,20 @@ type StatusHistory struct {
 	MediaAttachments []Attachment `json:"media_attachments"`
 }
 
+// ScheduledStatus holds information returned when ScheduledAt is set on a status
+type ScheduledParams struct {
+	ApplicationID ID          `json:"application_id"`
+	Idempotency   string      `json:"idempotency"`
+	InReplyToID   interface{} `json:"in_reply_to_id"`
+	MediaIDs      []ID        `json:"media_ids"`
+	Poll          *Poll       `json:"poll"`
+	ScheduledAt   *time.Time  `json:"scheduled_at,omitempty"`
+	Sensitive     bool        `json:"sensitive"`
+	SpoilerText   string      `json:"spoiler_text"`
+	Text          string      `json:"text"`
+	Visibility    string      `json:"visibility"`
+}
+
 // Context holds information for a mastodon context.
 type Context struct {
 	Ancestors   []*Status `json:"ancestors"`
