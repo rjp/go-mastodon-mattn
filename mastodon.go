@@ -354,13 +354,15 @@ type Attachment struct {
 	PreviewURL  string         `json:"preview_url"`
 	TextURL     string         `json:"text_url"`
 	Description string         `json:"description"`
+	BlurHash    string         `json:"blurhash"`
 	Meta        AttachmentMeta `json:"meta"`
 }
 
 // AttachmentMeta holds information for attachment metadata.
 type AttachmentMeta struct {
-	Original AttachmentSize `json:"original"`
-	Small    AttachmentSize `json:"small"`
+	Original AttachmentSize  `json:"original"`
+	Small    AttachmentSize  `json:"small"`
+	Focus    AttachmentFocus `json:"focus"`
 }
 
 // AttachmentSize holds information for attatchment size.
@@ -369,6 +371,12 @@ type AttachmentSize struct {
 	Height int64   `json:"height"`
 	Size   string  `json:"size"`
 	Aspect float64 `json:"aspect"`
+}
+
+// AttachmentSize holds information for attatchment size.
+type AttachmentFocus struct {
+	X float64 `json:"x"`
+	Y float64 `json:"y"`
 }
 
 // Emoji hold information for CustomEmoji.
