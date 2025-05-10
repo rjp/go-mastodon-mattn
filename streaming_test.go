@@ -36,6 +36,7 @@ data: {"id":"819516","unread":true,"accounts":[{"id":"108892712797543112","usern
 	`, largeContent))
 	var wg sync.WaitGroup
 	wg.Add(1)
+	errs := make(chan error, 1)
 	go func() {
 		defer wg.Done()
 		defer close(q)
@@ -43,6 +44,7 @@ data: {"id":"819516","unread":true,"accounts":[{"id":"108892712797543112","usern
 		if err != nil {
 			t.Errorf("should not be fail: %v", err)
 		}
+		errs <- err
 	}()
 	var passUpdate, passUpdateLarge, passNotification, passDelete, passError bool
 	for e := range q {
@@ -91,6 +93,10 @@ data: {"id":"819516","unread":true,"accounts":[{"id":"108892712797543112","usern
 			passUpdate, passUpdateLarge, passNotification, passDelete, passError)
 	}
 	wg.Wait()
+	err := <-errs
+	if err != nil {
+		t.Fatalf("should not be fail: %v", err)
+	}
 }
 
 func TestStreaming(t *testing.T) {
