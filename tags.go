@@ -53,3 +53,13 @@ func (c *Client) TagsFollowed(ctx context.Context, pg *Pagination) ([]*Tag, erro
 	}
 	return hashtags, nil
 }
+
+// TagsFollowed returns a list of hashtags you follow.
+func (c *Client) TagsFollowed(ctx context.Context, pg *Pagination) ([]*FollowedTag, error) {
+	var hashtags []*FollowedTag
+	err := c.doAPI(ctx, http.MethodGet, "/api/v1/followed_tags", nil, &hashtags, pg)
+	if err != nil {
+		return nil, err
+	}
+	return hashtags, nil
+}
