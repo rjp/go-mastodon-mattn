@@ -422,8 +422,8 @@ func (c *Client) UpdateStatus(ctx context.Context, toot *Toot, id ID) (*Status, 
 func (c *Client) postStatus(ctx context.Context, toot *Toot, update bool, updateID ID) (*Status, error) {
 	params := url.Values{}
 	params.Set("status", toot.Status)
-	if toot.InReplyToID != nil {
-		params.Set("in_reply_to_id", string(*toot.InReplyToID))
+	if toot.InReplyToID != "" {
+		params.Set("in_reply_to_id", string(toot.InReplyToID))
 	}
 	if toot.MediaIDs != nil {
 		for _, media := range toot.MediaIDs {
