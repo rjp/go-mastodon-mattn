@@ -1,3 +1,4 @@
+// TODO: Rename this to github.com/RasmusLindroth/go-mastodon before merging PR
 module github.com/blacklight/go-mastodon
 
 go 1.16
