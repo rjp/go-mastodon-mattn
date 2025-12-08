@@ -455,6 +455,9 @@ func (c *Client) postStatus(ctx context.Context, toot *Toot, update bool, update
 	if toot.SpoilerText != "" {
 		params.Set("spoiler_text", toot.SpoilerText)
 	}
+	if toot.ContentType != "" {
+		params.Set("content_type", toot.ContentType)
+	}
 
 	var status Status
 	var err error
