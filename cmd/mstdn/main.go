@@ -336,6 +336,11 @@ func makeApp() *cli.App {
 			Usage: "favourite status",
 			Action: cmdFavourite,
 		},
+		{
+			Name: "unfavourite",
+			Usage: "unfavourite status",
+			Action: cmdUnfavourite,
+		},
 	}
 	app.Setup()
 	return app
