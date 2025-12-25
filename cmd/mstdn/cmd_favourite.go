@@ -14,7 +14,7 @@ func cmdFavourite(c *cli.Context) error {
 		return errors.New("arguments required")
 	}
 	for i := 0; i < c.NArg(); i++ {
-		err := client.FavouriteStatus(context.Background(), mastodon.ID(c.Args().Get(i)))
+		_, err := client.Favourite(context.Background(), mastodon.ID(c.Args().Get(i)))
 		if err != nil {
 			return err
 		}
