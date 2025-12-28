@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
-	"time"
 )
 
 func TestTagInfo(t *testing.T) {
@@ -275,16 +274,16 @@ func TestTagsFollowed(t *testing.T) {
 	if len(tags[0].History) != 2 {
 		t.Fatalf("result should be two: %d", len(tags[0].History))
 	}
-	if tags[0].History[0].Day != "1668124800" {
+	if tags[0].History[0].Day.Unix() != 1668124800 {
 		t.Fatalf("want %q but %q", "1668124800", tags[0].History[0].Day)
 	}
-	if tags[0].History[0].Accounts != "1" {
+	if tags[0].History[0].Accounts != 1 {
 		t.Fatalf("want %q but %q", "1", tags[0].History[0].Accounts)
 	}
-	if tags[0].History[0].Uses != "2" {
+	if tags[0].History[0].Uses != 2 {
 		t.Fatalf("want %q but %q", "2", tags[0].History[0].Uses)
 	}
 	if tags[0].Following != true {
-		t.Fatalf("want %v but %q", nil, tags[0].Following)
+		t.Fatalf("want %v but %v", nil, tags[0].Following)
 	}
 }

@@ -59,17 +59,6 @@ type StatusHistory struct {
 	MediaAttachments []Attachment `json:"media_attachments"`
 }
 
-// StatusHistory is a struct to hold status history data.
-type StatusHistory struct {
-	Content          string       `json:"content"`
-	SpoilerText      string       `json:"spoiler_text"`
-	Account          Account      `json:"account"`
-	Sensitive        bool         `json:"sensitive"`
-	CreatedAt        time.Time    `json:"created_at"`
-	Emojis           []Emoji      `json:"emojis"`
-	MediaAttachments []Attachment `json:"media_attachments"`
-}
-
 // ScheduledStatus holds information returned when ScheduledAt is set on a status
 type ScheduledParams struct {
 	ApplicationID ID          `json:"application_id"`
