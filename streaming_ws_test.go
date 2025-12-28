@@ -176,11 +176,8 @@ func wsTest(t *testing.T, q chan Event, cancel func()) {
 	if errorEvent, ok := events[6].(*ErrorEvent); !ok {
 		t.Fatalf("should be fail: %v", errorEvent.Err)
 	}
-	if errorEvent, ok := events[6].(*ErrorEvent); !ok {
-		t.Fatalf("should be fail: %v", errorEvent.Err)
-	}
 	if errorEvent, ok := events[7].(*ErrorEvent); !ok {
-		t.Fatalf("should be fail: %v", errorEvent.Err)
+		t.Fatalf("should be fail: %v", errorEvent.err)
 	}
 }
 

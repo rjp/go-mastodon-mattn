@@ -58,18 +58,17 @@ func TestTagInfo(t *testing.T) {
 	if len(tag.History) != 2 {
 		t.Fatalf("result should be two: %d", len(tag.History))
 	}
-	uts := UnixTimeString{ time.Unix(1668124800, 0) }
-	if tag.History[0].Day != uts {
-		t.Fatalf("want %q but %q", uts, tag.History[0].Day)
+	if tag.History[0].Day != "1668124800" {
+		t.Fatalf("want %q but %q", "1668124800", tag.History[0].Day)
 	}
-	if tag.History[0].Accounts != 1 {
-		t.Fatalf("want %q but %q", 1, tag.History[0].Accounts)
+	if tag.History[0].Accounts != "1" {
+		t.Fatalf("want %q but %q", "1", tag.History[0].Accounts)
 	}
-	if tag.History[0].Uses != 2 {
-		t.Fatalf("want %q but %q", 2, tag.History[0].Uses)
+	if tag.History[0].Uses != "2" {
+		t.Fatalf("want %q but %q", "2", tag.History[0].Uses)
 	}
-	if tag.Following != false {
-		t.Fatalf("want %v but %v", nil, tag.Following)
+	if tag.Following != nil {
+		t.Fatalf("want %v but %q", nil, tag.Following)
 	}
 }
 
@@ -123,18 +122,17 @@ func TestTagFollow(t *testing.T) {
 	if len(tag.History) != 2 {
 		t.Fatalf("result should be two: %d", len(tag.History))
 	}
-	uts := UnixTimeString{ time.Unix(1668124800, 0) }
-	if tag.History[0].Day != uts {
-		t.Fatalf("want %q but %q", uts, tag.History[0].Day)
+	if tag.History[0].Day != "1668124800" {
+		t.Fatalf("want %q but %q", "1668124800", tag.History[0].Day)
 	}
-	if tag.History[0].Accounts != 1 {
-		t.Fatalf("want %q but %q", 1, tag.History[0].Accounts)
+	if tag.History[0].Accounts != "1" {
+		t.Fatalf("want %q but %q", "1", tag.History[0].Accounts)
 	}
-	if tag.History[0].Uses != 2 {
-		t.Fatalf("want %q but %q", 2, tag.History[0].Uses)
+	if tag.History[0].Uses != "2" {
+		t.Fatalf("want %q but %q", "2", tag.History[0].Uses)
 	}
 	if tag.Following != true {
-		t.Fatalf("want %v but %v", true, tag.Following)
+		t.Fatalf("want %v but %q", true, tag.Following)
 	}
 }
 
@@ -171,7 +169,6 @@ func TestTagUnfollow(t *testing.T) {
 		ClientSecret: "bar",
 		AccessToken:  "zoo",
 	})
-
 	_, err := client.TagUnfollow(context.Background(), "foo")
 	if err == nil {
 		t.Fatalf("should be fail: %v", err)
@@ -189,18 +186,17 @@ func TestTagUnfollow(t *testing.T) {
 	if len(tag.History) != 2 {
 		t.Fatalf("result should be two: %d", len(tag.History))
 	}
-	uts := UnixTimeString{ time.Unix(1668124800, 0) }
-	if tag.History[0].Day != uts {
-		t.Fatalf("want %q but %q", uts, tag.History[0].Day)
+	if tag.History[0].Day != "1668124800" {
+		t.Fatalf("want %q but %q", "1668124800", tag.History[0].Day)
 	}
-	if tag.History[0].Accounts != 1 {
-		t.Fatalf("want %q but %q", 1, tag.History[0].Accounts)
+	if tag.History[0].Accounts != "1" {
+		t.Fatalf("want %q but %q", "1", tag.History[0].Accounts)
 	}
-	if tag.History[0].Uses != 2 {
-		t.Fatalf("want %q but %q", 2, tag.History[0].Uses)
+	if tag.History[0].Uses != "2" {
+		t.Fatalf("want %q but %q", "2", tag.History[0].Uses)
 	}
 	if tag.Following != false {
-		t.Fatalf("want %v but %v", false, tag.Following)
+		t.Fatalf("want %v but %q", false, tag.Following)
 	}
 }
 
@@ -279,17 +275,16 @@ func TestTagsFollowed(t *testing.T) {
 	if len(tags[0].History) != 2 {
 		t.Fatalf("result should be two: %d", len(tags[0].History))
 	}
-	uts := UnixTimeString{ time.Unix(1668124800, 0) }
-	if tags[0].History[0].Day != uts {
-		t.Fatalf("want %q but %q", uts, tags[0].History[0].Day)
+	if tags[0].History[0].Day != "1668124800" {
+		t.Fatalf("want %q but %q", "1668124800", tags[0].History[0].Day)
 	}
-	if tags[0].History[0].Accounts != 1 {
-		t.Fatalf("want %q but %q", 1, tags[0].History[0].Accounts)
+	if tags[0].History[0].Accounts != "1" {
+		t.Fatalf("want %q but %q", "1", tags[0].History[0].Accounts)
 	}
-	if tags[0].History[0].Uses != 2 {
-		t.Fatalf("want %q but %q", 2, tags[0].History[0].Uses)
+	if tags[0].History[0].Uses != "2" {
+		t.Fatalf("want %q but %q", "2", tags[0].History[0].Uses)
 	}
 	if tags[0].Following != true {
-		t.Fatalf("want %v but %v", true, tags[0].Following)
+		t.Fatalf("want %v but %q", nil, tags[0].Following)
 	}
 }

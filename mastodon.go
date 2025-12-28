@@ -311,6 +311,7 @@ const (
 type Toot struct {
 	Status      string     `json:"status"`
 	InReplyToID ID         `json:"in_reply_to_id"`
+	QuoteID     *ID        `json:"quote_id"`
 	MediaIDs    []ID       `json:"media_ids"`
 	Sensitive   bool       `json:"sensitive"`
 	SpoilerText string     `json:"spoiler_text"`
@@ -318,6 +319,7 @@ type Toot struct {
 	Language    string     `json:"language"`
 	ScheduledAt *time.Time `json:"scheduled_at,omitempty"`
 	Poll        *TootPoll  `json:"poll"`
+	ContentType string     `json:"content_type,omitempty"`
 }
 
 // TootPoll holds information for creating a poll in Toot.
@@ -334,13 +336,6 @@ type Mention struct {
 	Username string `json:"username"`
 	Acct     string `json:"acct"`
 	ID       ID     `json:"id"`
-}
-
-// Tag hold information for tag.
-type Tag struct {
-	Name    string    `json:"name"`
-	URL     string    `json:"url"`
-	History []History `json:"history"`
 }
 
 // History hold information for history.
