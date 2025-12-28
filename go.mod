@@ -4,7 +4,9 @@ module github.com/blacklight/go-mastodon
 go 1.23
 
 require (
+	github.com/RasmusLindroth/go-mastodon v0.0.21
 	github.com/gorilla/websocket v1.5.3
+	github.com/mattn/go-mastodon v0.0.10
 	github.com/tomnomnom/linkheader v0.0.0-20250811210735-e5fe3b51442e
 )
 
